@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SolidWorks URDF Exporter 1.6.0-4-g7f85cfe, build 1.6.7995.38578.
+     Adapted to legged_control names. CAD geometry, axes, limits and inertias retained.
+     Mesh resources remain in the colt package. -->
+<robot name="colt">
+  <link name="base">
+    <inertial>
+      <origin xyz="-0.000538087486473511 -9.45925485405101E-05 0.0501893101734975" rpy="0 0 0"/>
+      <mass value="2.75268889"/>
+      <inertia ixx="0.01626052" ixy="0.00000169" ixz="-0.00002639" iyy="0.04759705" iyz="-0.00000476" izz="0.05935833"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/base_link.STL"/>
+      </geometry>
+      <material name="base_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="LF_hip">
+    <inertial>
+      <origin xyz="0.044514 0.02052 -4.0438E-05" rpy="0 0 0"/>
+      <mass value="0.64335910"/>
+      <inertia ixx="0.00044450" ixy="-0.00001634" ixz="0.00000111" iyy="0.00082989" iyz="-0.00000043" izz="0.00057542"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_HAA.STL"/>
+      </geometry>
+      <material name="LF_hip_material">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_HAA.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LF_HAA" type="revolute">
+    <origin xyz="0.1561 0.0699999999999992 0.0500000000000014" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="LF_hip"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LF_thigh">
+    <inertial>
+      <origin xyz="-0.041882 -0.015556 4.427E-05" rpy="0 0 0"/>
+      <mass value="0.79839719"/>
+      <inertia ixx="0.00073941" ixy="0.00044449" ixz="0.00000115" iyy="0.00407264" iyz="-0.00000136" izz="0.00381707"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_HFE.STL"/>
+      </geometry>
+      <material name="LF_thigh_material">
+        <color rgba="0 0.49804 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_HFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LF_HFE" type="revolute">
+    <origin xyz="0.0555001125555474 0.0978000000000008 0" rpy="0 0 0"/>
+    <parent link="LF_hip"/>
+    <child link="LF_thigh"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LF_calf">
+    <inertial>
+      <origin xyz="0.08644 -7.494E-16 -0.080098" rpy="0 0 0"/>
+      <mass value="0.11881926"/>
+      <inertia ixx="0.00052739" ixy="-0.00000000" ixz="0.00045139" iyy="0.00095114" iyz="-0.00000000" izz="0.00043018"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_KFE.STL"/>
+      </geometry>
+      <material name="LF_calf_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_KFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LF_KFE" type="revolute">
+    <origin xyz="-0.25 0 0" rpy="0 0 0"/>
+    <parent link="LF_thigh"/>
+    <child link="LF_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LF_FOOT">
+    <inertial>
+      <origin xyz="-0.0017122 -5.6095E-09 0.0058956" rpy="0 0 0"/>
+      <mass value="0.07000000"/>
+      <inertia ixx="0.00001583" ixy="-0.00000000" ixz="0.00000150" iyy="0.00001630" iyz="-0.00000000" izz="0.00001117"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LF_FOOT.STL"/>
+      </geometry>
+      <material name="LF_FOOT_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.019"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LF_foot_fixed" type="fixed">
+    <origin xyz="0.17522 0 -0.22084" rpy="0 0 0"/>
+    <parent link="LF_calf"/>
+    <child link="LF_FOOT"/>
+  </joint>
+  <link name="RF_hip">
+    <inertial>
+      <origin xyz="0.0446380224836943 -0.0205195372056774 -4.049323374683E-05" rpy="0 0 0"/>
+      <mass value="0.64335910"/>
+      <inertia ixx="0.00044450" ixy="0.00001477" ixz="-0.00000076" iyy="0.00083097" iyz="0.00000043" izz="0.00057650"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_HAA.STL"/>
+      </geometry>
+      <material name="RF_hip_material">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_HAA.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RF_HAA" type="revolute">
+    <origin xyz="0.156099999999998 -0.0700000000000004 0.0500000000000079" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="RF_hip"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RF_thigh">
+    <inertial>
+      <origin xyz="-0.0417963056119757 0.0155557741126271 4.4412122188961E-05" rpy="0 0 0"/>
+      <mass value="0.79839719"/>
+      <inertia ixx="0.00073941" ixy="-0.00044696" ixz="-0.00000072" iyy="0.00407775" iyz="0.00000136" izz="0.00382217"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_HFE.STL"/>
+      </geometry>
+      <material name="RF_thigh_material">
+        <color rgba="0 0.498039215686275 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_HFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RF_HFE" type="revolute">
+    <origin xyz="0.0554998874444546 -0.0977999999999988 0" rpy="0 0 0"/>
+    <parent link="RF_hip"/>
+    <child link="RF_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RF_calf">
+    <inertial>
+      <origin xyz="0.0864399642701854 3.10862446895044E-15 -0.0800977783593352" rpy="0 0 0"/>
+      <mass value="0.11881926"/>
+      <inertia ixx="0.00052739" ixy="-0.00000000" ixz="0.00045139" iyy="0.00095114" iyz="-0.00000000" izz="0.00043018"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_KFE.STL"/>
+      </geometry>
+      <material name="RF_calf_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_KFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RF_KFE" type="revolute">
+    <origin xyz="-0.249999999995038 0 0" rpy="0 0 0"/>
+    <parent link="RF_thigh"/>
+    <child link="RF_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RF_FOOT">
+    <inertial>
+      <origin xyz="-0.001712168302058 -5.60953780648354E-09 0.00589558114153227" rpy="0 0 0"/>
+      <mass value="0.07000000"/>
+      <inertia ixx="0.00001583" ixy="-0.00000000" ixz="0.00000150" iyy="0.00001630" iyz="-0.00000000" izz="0.00001117"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RF_FOOT.STL"/>
+      </geometry>
+      <material name="RF_FOOT_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.019"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RF_foot_fixed" type="fixed">
+    <origin xyz="0.17521 0 -0.22084" rpy="0 0 0"/>
+    <parent link="RF_calf"/>
+    <child link="RF_FOOT"/>
+  </joint>
+  <link name="LH_hip">
+    <inertial>
+      <origin xyz="-0.0446380224521045 0.02051953720572 -4.04932356393231E-05" rpy="0 0 0"/>
+      <mass value="0.64335910"/>
+      <inertia ixx="0.00044450" ixy="0.00001477" ixz="0.00000076" iyy="0.00083097" iyz="-0.00000043" izz="0.00057650"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_HAA.STL"/>
+      </geometry>
+      <material name="LH_hip_material">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_HAA.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LH_HAA" type="revolute">
+    <origin xyz="-0.1561 0.07 0.05" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="LH_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LH_thigh">
+    <inertial>
+      <origin xyz="-0.0418817037270969 -0.015555774112628 4.43183442665335E-05" rpy="0 0 0"/>
+      <mass value="0.79839719"/>
+      <inertia ixx="0.00073941" ixy="0.00044449" ixz="0.00000115" iyy="0.00407264" iyz="-0.00000136" izz="0.00381707"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_HFE.STL"/>
+      </geometry>
+      <material name="LH_thigh_material">
+        <color rgba="0 0.498039215686275 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_HFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LH_HFE" type="revolute">
+    <origin xyz="-0.0554998874444527 0.097799999999991 0" rpy="0 0 0"/>
+    <parent link="LH_hip"/>
+    <child link="LH_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LH_calf">
+    <inertial>
+      <origin xyz="0.0864396228085414 -5.13478148889135E-15 -0.0800981468564982" rpy="0 0 0"/>
+      <mass value="0.11881926"/>
+      <inertia ixx="0.00052739" ixy="-0.00000000" ixz="0.00045139" iyy="0.00095114" iyz="-0.00000000" izz="0.00043018"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_KFE.STL"/>
+      </geometry>
+      <material name="LH_calf_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_KFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LH_KFE" type="revolute">
+    <origin xyz="-0.249999999999123 0 0" rpy="0 0 0"/>
+    <parent link="LH_thigh"/>
+    <child link="LH_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="LH_FOOT">
+    <inertial>
+      <origin xyz="-0.00171219952931162 -5.60954321882079E-09 0.00589557207278049" rpy="0 0 0"/>
+      <mass value="0.07000000"/>
+      <inertia ixx="0.00001583" ixy="-0.00000000" ixz="0.00000150" iyy="0.00001630" iyz="-0.00000000" izz="0.00001117"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_LH_FOOT.STL"/>
+      </geometry>
+      <material name="LH_FOOT_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.019"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LH_foot_fixed" type="fixed">
+    <origin xyz="0.175215215481091 0 -0.220837258839277" rpy="0 0 0"/>
+    <parent link="LH_calf"/>
+    <child link="LH_FOOT"/>
+  </joint>
+  <link name="RH_hip">
+    <inertial>
+      <origin xyz="-0.0445142059745414 -0.0205195372057441 -4.04380325148418E-05" rpy="0 0 0"/>
+      <mass value="0.64335910"/>
+      <inertia ixx="0.00044450" ixy="-0.00001634" ixz="-0.00000111" iyy="0.00082989" iyz="0.00000043" izz="0.00057542"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_HAA.STL"/>
+      </geometry>
+      <material name="RH_hip_material">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_HAA.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RH_HAA" type="revolute">
+    <origin xyz="-0.1561 -0.07 0.05" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="RH_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RH_thigh">
+    <inertial>
+      <origin xyz="-0.0417963051379444 0.015555774112628 4.43160554515973E-05" rpy="0 0 0"/>
+      <mass value="0.79839719"/>
+      <inertia ixx="0.00073941" ixy="-0.00044696" ixz="-0.00000069" iyy="0.00407775" iyz="0.00000136" izz="0.00382217"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_HFE.STL"/>
+      </geometry>
+      <material name="RH_thigh_material">
+        <color rgba="0 0.498039215686275 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_HFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RH_HFE" type="revolute">
+    <origin xyz="-0.055500112553648 -0.0978000000000028 0" rpy="0 0 0"/>
+    <parent link="RH_hip"/>
+    <child link="RH_thigh"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RH_calf">
+    <inertial>
+      <origin xyz="0.0864391068799436 5.55111512312578E-17 -0.0800987036282719" rpy="0 0 0"/>
+      <mass value="0.11881926"/>
+      <inertia ixx="0.00052740" ixy="-0.00000000" ixz="0.00045139" iyy="0.00095114" iyz="-0.00000000" izz="0.00043017"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_KFE.STL"/>
+      </geometry>
+      <material name="RH_calf_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_KFE.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RH_KFE" type="revolute">
+    <origin xyz="-0.250000000000101 0 0" rpy="0 0 0"/>
+    <parent link="RH_thigh"/>
+    <child link="RH_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.28" upper="6.28" effort="100" velocity="100"/>
+  </joint>
+  <link name="RH_FOOT">
+    <inertial>
+      <origin xyz="-0.00171216155242498 -5.60953619666016E-09 0.00589531136679217" rpy="0 0 0"/>
+      <mass value="0.07000000"/>
+      <inertia ixx="0.00001583" ixy="-0.00000000" ixz="0.00000150" iyy="0.00001630" iyz="-0.00000000" izz="0.00001117"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/C_RH_FOOT.STL"/>
+      </geometry>
+      <material name="RH_FOOT_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.019"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RH_foot_fixed" type="fixed">
+    <origin xyz="0.175213793021927 0 -0.220838115693587" rpy="0 0 0"/>
+    <parent link="RH_calf"/>
+    <child link="RH_FOOT"/>
+  </joint>
+  <link name="base_imu">
+    <inertial>
+      <origin xyz="1.73472347597681E-18 1.69454235054143E-18 -0.01" rpy="0 0 0"/>
+      <mass value="0.00800000"/>
+      <inertia ixx="0.00000053" ixy="-0.00000000" ixz="-0.00000000" iyy="0.00000053" iyz="-0.00000000" izz="0.00000053"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/imu_link.STL"/>
+      </geometry>
+      <material name="base_imu_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://colt/meshes/imu_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_imu_joint" type="fixed">
+    <origin xyz="0 0 0.023" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="base_imu"/>
+  </joint>
+</robot>
