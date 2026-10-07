@@ -116,6 +116,8 @@ ls src/pinocchio
 
 ## 3. 本项目使用的 Submodule
 
+感谢github上的各位开源大佬，可以让作者能够尝试将自己的模型导入廖佬的legged_control中实现对自主设计的四足机器人的仿真控制
+
 ### hpp-fcl
 
 ```text
