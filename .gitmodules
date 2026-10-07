@@ -1,15 +1,19 @@
 [submodule "hpp-fcl"]
-	path = src/hpp-fcl
-	url = https://github.com/leggedrobotics/hpp-fcl.git
+path = src/hpp-fcl
+url = https://github.com/leggedrobotics/hpp-fcl.git
+
 [submodule "legged_control"]
-	path = src/legged_control
-	url = https://github.com/qiayuanl/legged_control.git
+path = src/legged_control
+url = https://github.com/qiayuanl/legged_control.git
+
 [submodule "ocs2"]
-	path = src/ocs2
-	url = https://github.com/leggedrobotics/ocs2.git
+path = src/ocs2
+url = https://github.com/leggedrobotics/ocs2.git
+
 [submodule "ocs2_robotic_assets"]
-	path = src/ocs2_robotic_assets
-	url = https://github.com/leggedrobotics/ocs2_robotic_assets.git
+path = src/ocs2_robotic_assets
+url = https://github.com/leggedrobotics/ocs2_robotic_assets.git
+
 [submodule "pinocchio"]
-	path = src/pinocchio
-	url = https://github.com/leggedrobotics/pinocchio.git
+path = src/pinocchio
+url = https://github.com/leggedrobotics/pinocchio.git
