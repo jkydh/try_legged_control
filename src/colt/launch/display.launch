@@ -1,20 +1,13 @@
 <launch>
-  <arg
-    name="model" />
-  <param
-    name="robot_description"
-    textfile="$(find colt)/urdf/colt.urdf" />
-  <node
-    name="joint_state_publisher_gui"
-    pkg="joint_state_publisher_gui"
-    type="joint_state_publisher_gui" />
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher" />
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find colt)/urdf.rviz" />
+  <!-- Display Colt without Gazebo; drive 12 joints using GUI. -->
+  <param name="robot_description" textfile="$(find colt)/urdf/colt.urdf" />
+
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"
+        name="joint_state_publisher_gui" output="screen" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+        name="robot_state_publisher" output="screen" />
+
+  <node pkg="rviz" type="rviz" name="rviz" output="screen"
+        args="-d $(find colt)/rviz/colt.rviz" />
 </launch>
