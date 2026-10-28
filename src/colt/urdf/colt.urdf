@@ -8,7 +8,7 @@
     name="baselink">
     <inertial>
       <origin
-        xyz="-0.011142 2.0951E-05 0.045208"
+        xyz="-0.01108367 0.00002588 0.04826783"
         rpy="0 0 0" />
       <mass
         value="3.78620000" />
@@ -16,9 +16,9 @@
         ixx="0.02092234"
         ixy="0.00002370"
         ixz="-0.00095545"
-        iyy="0.03984525"
+        iyy="0.03985783"
         iyz="0.00000409"
-        izz="0.05402597" />
+        izz="0.05403855" />
     </inertial>
     <visual>
       <origin
@@ -31,16 +31,16 @@
       <material
         name="">
         <color
-          rgba="0.75294 0.75294 0.75294 1" />
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 0.048"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/baselink.STL" />
+        <box
+          size="0.32 0.15 0.10" />
       </geometry>
     </collision>
   </link>
@@ -48,17 +48,17 @@
     name="C_LF_HAA">
     <inertial>
       <origin
-        xyz="0.0445442381203164 0.020657388669222 4.0003889014241E-05"
+        xyz="0.04941645 0.01858089 0.00005193"
         rpy="0 0 0" />
       <mass
-        value="0.65477754" />
+        value="0.65469272" />
       <inertia
-        ixx="0.00045033"
-        ixy="-0.00001733"
+        ixx="0.00047130"
+        ixy="-0.00001689"
         ixz="0.00000072"
-        iyy="0.00085689"
+        iyy="0.00085580"
         iyz="0.00000042"
-        izz="0.00060034" />
+        izz="0.00057931" />
     </inertial>
     <visual>
       <origin
@@ -76,11 +76,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0.02775 0.0449 0"
+        rpy="1.5707963267948966 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LF_HAA.STL" />
+        <cylinder
+          length="0.09"
+          radius="0.035" />
       </geometry>
     </collision>
   </link>
@@ -99,24 +100,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LF_HFE">
     <inertial>
       <origin
-        xyz="-0.032782 -0.011166 0.0014236"
+        xyz="-0.00067859 -0.01672702 -0.02147447"
         rpy="0 0 0" />
       <mass
-        value="0.80430000" />
+        value="0.80510000" />
       <inertia
-        ixx="0.00063953"
-        ixy="0.00028898"
-        ixz="0.00004711"
-        iyy="0.00300133"
-        iyz="-0.00001131"
-        izz="0.00272784" />
+        ixx="0.00273997"
+        ixy="0.00001038"
+        ixz="-0.00004607"
+        iyy="0.00301254"
+        iyz="0.00028693"
+        izz="0.00063906" />
     </inertial>
     <visual>
       <origin
@@ -129,16 +130,16 @@
       <material
         name="">
         <color
-          rgba="0.75294 0.75294 0.75294 1" />
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.10"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LF_HFE.STL" />
+        <box
+          size="0.20 0.030 0.035" />
       </geometry>
     </collision>
   </link>
@@ -157,24 +158,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LF_KFE">
     <inertial>
       <origin
-        xyz="0.063017 5.5511E-17 -0.060542"
+        xyz="0.00147653 0.00000000 -0.10699506"
         rpy="0 0 0" />
       <mass
-        value="0.09520000" />
+        value="0.11520000" />
       <inertia
-        ixx="0.00029950"
-        ixy="-0.00000000"
-        ixz="0.00029297"
-        iyy="0.00059895"
-        iyz="-0.00000000"
-        izz="0.00030470" />
+        ixx="0.00087180"
+        ixy="0.00000000"
+        ixz="-0.00000111"
+        iyy="0.00087658"
+        iyz="0.00000000"
+        izz="0.00001163" />
     </inertial>
     <visual>
       <origin
@@ -187,16 +188,16 @@
       <material
         name="">
         <color
-          rgba="0.75294 0.75294 0.75294 1" />
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.115"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LF_KFE.STL" />
+        <box
+          size="0.23 0.016 0.016" />
       </geometry>
     </collision>
   </link>
@@ -204,7 +205,7 @@
     name="LF_KFE"
     type="revolute">
     <origin
-      xyz="-0.2 0 0"
+      xyz="0 0 -0.2"
       rpy="0 0 0" />
     <parent
       link="C_LF_HFE" />
@@ -215,24 +216,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LF_FOOT">
     <inertial>
       <origin
-        xyz="-0.0085343 3.1871E-10 0.0085617"
+        xyz="0.00000229 0.00000001 -0.00318273"
         rpy="0 0 0" />
       <mass
-        value="0.07000000" />
+        value="0.05000000" />
       <inertia
-        ixx="0.00001244"
-        ixy="-0.00000000"
-        ixz="0.00000216"
-        iyy="0.00001493"
-        iyz="-0.00000000"
-        izz="0.00001239" />
+        ixx="0.00000662"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00000609"
+        iyz="0.00000000"
+        izz="0.00000785" />
     </inertial>
     <visual>
       <origin
@@ -245,7 +246,7 @@
       <material
         name="">
         <color
-          rgba="0.75294 0.75294 0.75294 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -253,8 +254,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LF_FOOT.STL" />
+        <sphere radius="0.019"/>
       </geometry>
     </collision>
   </link>
@@ -262,7 +262,7 @@
     name="LF_FOOT"
     type="fixed">
     <origin
-      xyz="0.166232058395859 0 -0.166232410966886"
+      xyz="0 0 -0.229999807853034"
       rpy="0 0 0" />
     <parent
       link="C_LF_KFE" />
@@ -275,17 +275,17 @@
     name="C_LH_HAA">
     <inertial>
       <origin
-        xyz="-0.0445442381203164 0.0206573886692219 -4.00038890141091E-05"
+        xyz="-0.04941645 0.01858089 -0.00005193"
         rpy="0 0 0" />
       <mass
-        value="0.65477754" />
+        value="0.65469272" />
       <inertia
-        ixx="0.00045033"
-        ixy="0.00001733"
+        ixx="0.00047130"
+        ixy="0.00001689"
         ixz="0.00000072"
-        iyy="0.00085689"
+        iyy="0.00085580"
         iyz="-0.00000042"
-        izz="0.00060034" />
+        izz="0.00057931" />
     </inertial>
     <visual>
       <origin
@@ -303,11 +303,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.02775 0.0449 0"
+        rpy="1.5707963267948966 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LH_HAA.STL" />
+        <cylinder
+          length="0.09"
+          radius="0.035" />
       </geometry>
     </collision>
   </link>
@@ -322,28 +323,28 @@
     <child
       link="C_LH_HAA" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LH_HFE">
     <inertial>
       <origin
-        xyz="-0.0327821190917945 -0.0111663468300947 0.00142363704604857"
+        xyz="-0.00067895 -0.01672702 -0.02147504"
         rpy="0 0 0" />
       <mass
-        value="0.80430000" />
+        value="0.80510000" />
       <inertia
-        ixx="0.00063953"
-        ixy="0.00028898"
-        ixz="0.00004711"
-        iyy="0.00300133"
-        iyz="-0.00001132"
-        izz="0.00272784" />
+        ixx="0.00273997"
+        ixy="0.00001038"
+        ixz="-0.00004606"
+        iyy="0.00301254"
+        iyz="0.00028693"
+        izz="0.00063906" />
     </inertial>
     <visual>
       <origin
@@ -361,11 +362,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.10"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LH_HFE.STL" />
+        <box
+          size="0.20 0.030 0.035" />
       </geometry>
     </collision>
   </link>
@@ -373,7 +374,7 @@
     name="LH_HFE"
     type="revolute">
     <origin
-      xyz="-0.0555000795883689 0.0898000000000003 0"
+      xyz="-0.0555 0.0898 0"
       rpy="0 0 0" />
     <parent
       link="C_LH_HAA" />
@@ -384,24 +385,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LH_KFE">
     <inertial>
       <origin
-        xyz="0.0630170852376202 6.10622663543836E-16 -0.060541812239489"
+        xyz="0.00147741 0.00000000 -0.10699581"
         rpy="0 0 0" />
       <mass
-        value="0.09520000" />
+        value="0.11520000" />
       <inertia
-        ixx="0.00029950"
-        ixy="-0.00000000"
-        ixz="0.00029297"
-        iyy="0.00059895"
-        iyz="-0.00000000"
-        izz="0.00030470" />
+        ixx="0.00087180"
+        ixy="0.00000000"
+        ixz="-0.00000111"
+        iyy="0.00087658"
+        iyz="0.00000000"
+        izz="0.00001163" />
     </inertial>
     <visual>
       <origin
@@ -419,11 +420,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.115"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LH_KFE.STL" />
+        <box
+          size="0.23 0.016 0.016" />
       </geometry>
     </collision>
   </link>
@@ -431,7 +432,7 @@
     name="LH_KFE"
     type="revolute">
     <origin
-      xyz="-0.2 0 0"
+      xyz="0 0 -0.2"
       rpy="0 0 0" />
     <parent
       link="C_LH_HFE" />
@@ -442,24 +443,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_LH_FOOT">
     <inertial>
       <origin
-        xyz="-0.0085341361400805 3.18709725277699E-10 0.00856120198429078"
+        xyz="0.00000364 0.00000001 -0.00318330"
         rpy="0 0 0" />
       <mass
-        value="0.07000000" />
+        value="0.05000000" />
       <inertia
-        ixx="0.00001244"
-        ixy="-0.00000000"
-        ixz="0.00000216"
-        iyy="0.00001493"
-        iyz="-0.00000000"
-        izz="0.00001239" />
+        ixx="0.00000662"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00000609"
+        iyz="0.00000000"
+        izz="0.00000785" />
     </inertial>
     <visual>
       <origin
@@ -472,7 +473,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -480,8 +481,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_LH_FOOT.STL" />
+        <sphere radius="0.019"/>
       </geometry>
     </collision>
   </link>
@@ -489,7 +489,7 @@
     name="LH_FOOT"
     type="fixed">
     <origin
-      xyz="0.166231482609425 0 -0.166232355223461"
+      xyz="0 0 -0.229999999990562"
       rpy="0 0 0" />
     <parent
       link="C_LH_KFE" />
@@ -502,17 +502,17 @@
     name="C_RF_HAA">
     <inertial>
       <origin
-        xyz="0.0445442381203163 -0.0206573886692219 -4.00038890143103E-05"
+        xyz="0.04941645 -0.01858089 -0.00005193"
         rpy="0 0 0" />
       <mass
-        value="0.65477754" />
+        value="0.65469272" />
       <inertia
-        ixx="0.00045033"
-        ixy="0.00001733"
+        ixx="0.00047130"
+        ixy="0.00001689"
         ixz="-0.00000072"
-        iyy="0.00085689"
+        iyy="0.00085580"
         iyz="0.00000042"
-        izz="0.00060034" />
+        izz="0.00057931" />
     </inertial>
     <visual>
       <origin
@@ -530,11 +530,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0.02775 -0.0449 0"
+        rpy="1.5707963267948966 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RF_HAA.STL" />
+        <cylinder
+          length="0.09"
+          radius="0.035" />
       </geometry>
     </collision>
   </link>
@@ -553,24 +554,24 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RF_HFE">
     <inertial>
       <origin
-        xyz="-0.0327226722252371 0.0111661655451076 0.00141842724006355"
+        xyz="-0.00067901 0.01672702 -0.02134593"
         rpy="0 0 0" />
       <mass
         value="0.80510000" />
       <inertia
-        ixx="0.00063973"
-        ixy="-0.00029174"
-        ixz="0.00004426"
-        iyy="0.00301275"
-        iyz="0.00001124"
-        izz="0.00273914" />
+        ixx="0.00274442"
+        ixy="-0.00001038"
+        ixz="-0.00004429"
+        iyy="0.00301699"
+        iyz="-0.00028923"
+        izz="0.00063906" />
     </inertial>
     <visual>
       <origin
@@ -588,11 +589,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.10"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RF_HFE.STL" />
+        <box
+          size="0.20 0.030 0.035" />
       </geometry>
     </collision>
   </link>
@@ -600,35 +601,35 @@
     name="RF_HFE"
     type="revolute">
     <origin
-      xyz="0.0555000795883688 -0.0897999999999995 0"
+      xyz="0.0555 -0.0898 0"
       rpy="0 0 0" />
     <parent
       link="C_RF_HAA" />
     <child
       link="C_RF_HFE" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RF_KFE">
     <inertial>
       <origin
-        xyz="0.0630174059101227 -5.82867087928207E-16 -0.0605414784543997"
+        xyz="0.00147401 0.00000000 -0.10699586"
         rpy="0 0 0" />
       <mass
-        value="0.09520000" />
+        value="0.11520000" />
       <inertia
-        ixx="0.00029950"
-        ixy="-0.00000000"
-        ixz="0.00029297"
-        iyy="0.00059895"
-        iyz="-0.00000000"
-        izz="0.00030470" />
+        ixx="0.00087180"
+        ixy="0.00000000"
+        ixz="-0.00000112"
+        iyy="0.00087658"
+        iyz="0.00000000"
+        izz="0.00001163" />
     </inertial>
     <visual>
       <origin
@@ -646,11 +647,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.115"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RF_KFE.STL" />
+        <box
+          size="0.23 0.016 0.016" />
       </geometry>
     </collision>
   </link>
@@ -658,35 +659,35 @@
     name="RF_KFE"
     type="revolute">
     <origin
-      xyz="-0.2 0 0"
+      xyz="0 0 -0.2"
       rpy="0 0 0" />
     <parent
       link="C_RF_HFE" />
     <child
       link="C_RF_KFE" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RF_FOOT">
     <inertial>
       <origin
-        xyz="-0.00853417737544787 3.58303192671272E-10 0.00856116201884216"
+        xyz="-0.00000123 0.00000001 -0.00318333"
         rpy="0 0 0" />
       <mass
-        value="0.07000000" />
+        value="0.05000000" />
       <inertia
-        ixx="0.00001244"
-        ixy="-0.00000000"
-        ixz="0.00000216"
-        iyy="0.00001493"
-        iyz="-0.00000000"
-        izz="0.00001239" />
+        ixx="0.00000662"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00000609"
+        iyz="0.00000000"
+        izz="0.00000785" />
     </inertial>
     <visual>
       <origin
@@ -699,7 +700,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -707,8 +708,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RF_FOOT.STL" />
+        <sphere radius="0.019"/>
       </geometry>
     </collision>
   </link>
@@ -716,7 +716,7 @@
     name="RF_FOOT"
     type="fixed">
     <origin
-      xyz="0.166232363094352 0 -0.16623147473847"
+      xyz="0 0 -0.23"
       rpy="0 0 0" />
     <parent
       link="C_RF_KFE" />
@@ -729,17 +729,17 @@
     name="C_RH_HAA">
     <inertial>
       <origin
-        xyz="-0.0445442381203163 -0.0206573886692219 4.00038890141854E-05"
+        xyz="-0.04941645 -0.01858089 0.00005193"
         rpy="0 0 0" />
       <mass
-        value="0.65477754" />
+        value="0.65469272" />
       <inertia
-        ixx="0.00045033"
-        ixy="-0.00001733"
+        ixx="0.00047130"
+        ixy="-0.00001689"
         ixz="-0.00000072"
-        iyy="0.00085689"
+        iyy="0.00085580"
         iyz="-0.00000042"
-        izz="0.00060034" />
+        izz="0.00057931" />
     </inertial>
     <visual>
       <origin
@@ -757,11 +757,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.02775 -0.0449 0"
+        rpy="1.5707963267948966 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RH_HAA.STL" />
+        <cylinder
+          length="0.09"
+          radius="0.035" />
       </geometry>
     </collision>
   </link>
@@ -776,28 +777,28 @@
     <child
       link="C_RH_HAA" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RH_HFE">
     <inertial>
       <origin
-        xyz="-0.0327226722252373 0.0111661655451076 0.00141842724006695"
+        xyz="-0.00067939 0.01672702 -0.02134544"
         rpy="0 0 0" />
       <mass
         value="0.80510000" />
       <inertia
-        ixx="0.00063973"
-        ixy="-0.00029174"
-        ixz="0.00004426"
-        iyy="0.00301275"
-        iyz="0.00001124"
-        izz="0.00273914" />
+        ixx="0.00274442"
+        ixy="-0.00001038"
+        ixz="-0.00004429"
+        iyy="0.00301699"
+        iyz="-0.00028923"
+        izz="0.00063906" />
     </inertial>
     <visual>
       <origin
@@ -815,11 +816,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.10"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RH_HFE.STL" />
+        <box
+          size="0.20 0.030 0.035" />
       </geometry>
     </collision>
   </link>
@@ -827,35 +828,35 @@
     name="RH_HFE"
     type="revolute">
     <origin
-      xyz="-0.0555003046991673 -0.0898000000000001 0"
+      xyz="-0.0555 -0.0898 0"
       rpy="0 0 0" />
     <parent
       link="C_RH_HAA" />
     <child
       link="C_RH_HFE" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RH_KFE">
     <inertial>
       <origin
-        xyz="0.0630174059101228 1.66533453693773E-16 -0.0605414784545133"
+        xyz="0.00147363 0.00000000 -0.10699537"
         rpy="0 0 0" />
       <mass
-        value="0.09520000" />
+        value="0.11520000" />
       <inertia
-        ixx="0.00029950"
-        ixy="-0.00000000"
-        ixz="0.00029297"
-        iyy="0.00059895"
-        iyz="-0.00000000"
-        izz="0.00030470" />
+        ixx="0.00087180"
+        ixy="0.00000000"
+        ixz="-0.00000112"
+        iyy="0.00087658"
+        iyz="0.00000000"
+        izz="0.00001163" />
     </inertial>
     <visual>
       <origin
@@ -873,11 +874,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 -0.115"
+        rpy="0 1.5707963267948966 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RH_KFE.STL" />
+        <box
+          size="0.23 0.016 0.016" />
       </geometry>
     </collision>
   </link>
@@ -885,35 +886,35 @@
     name="RH_KFE"
     type="revolute">
     <origin
-      xyz="-0.2 0 0"
+      xyz="0 0 -0.2"
       rpy="0 0 0" />
     <parent
       link="C_RH_HFE" />
     <child
       link="C_RH_KFE" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="50"
-      velocity="50" />
+      effort="30"
+      velocity="30" />
   </joint>
   <link
     name="C_RH_FOOT">
     <inertial>
       <origin
-        xyz="-0.00853417737544829 3.58302998382243E-10 0.00856116201885225"
+        xyz="-0.00000162 0.00000001 -0.00318284"
         rpy="0 0 0" />
       <mass
-        value="0.07000000" />
+        value="0.05000000" />
       <inertia
-        ixx="0.00001244"
-        ixy="-0.00000000"
-        ixz="0.00000216"
-        iyy="0.00001493"
-        iyz="-0.00000000"
-        izz="0.00001239" />
+        ixx="0.00000662"
+        ixy="0.00000000"
+        ixz="0.00000000"
+        iyy="0.00000609"
+        iyz="0.00000000"
+        izz="0.00000785" />
     </inertial>
     <visual>
       <origin
@@ -926,7 +927,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -934,8 +935,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/C_RH_FOOT.STL" />
+        <sphere radius="0.019"/>
       </geometry>
     </collision>
   </link>
@@ -943,7 +943,7 @@
     name="RH_FOOT"
     type="fixed">
     <origin
-      xyz="0.166232363094353 0 -0.166231474738594"
+      xyz="0 0 -0.23"
       rpy="0 0 0" />
     <parent
       link="C_RH_KFE" />
@@ -956,16 +956,16 @@
     name="imu_Link">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00000000 0.00000000 -0.01000000"
         rpy="0 0 0" />
       <mass
         value="0.00800000" />
       <inertia
         ixx="0.00000053"
-        ixy="-0.00000000"
-        ixz="-0.00000000"
+        ixy="0.00000000"
+        ixz="0.00000000"
         iyy="0.00000053"
-        iyz="-0.00000000"
+        iyz="0.00000000"
         izz="0.00000053" />
     </inertial>
     <visual>
@@ -987,8 +987,8 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://colt/meshes/imu_Link.STL" />
+        <box
+          size="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
