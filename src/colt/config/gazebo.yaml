@@ -1,0 +1,12 @@
+gazebo:
+  effort_limit: 20.0  # Final PD + feedforward command, in N m, for every joint.
+  torque_diagnostics: true
+  delay: 0.0
+  imus:
+    base_imu:
+      # Read the preserved IMU link, following the reference LeggedHWSim setup.
+      frame_id: base_imu
+      orientation_covariance_diagonal: [0.0012, 0.0012, 0.0012]
+      angular_velocity_covariance: [0.0004, 0.0004, 0.0004]
+      linear_acceleration_covariance: [0.01, 0.01, 0.01]
+  contacts: [LF_FOOT, RF_FOOT, LH_FOOT, RH_FOOT]

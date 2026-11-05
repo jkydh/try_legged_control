@@ -1,0 +1,208 @@
+{
+  "date": "2026-10-29",
+  "environment": "ROS Noetic / Gazebo, flat ground, 0.001 s physics step",
+  "mpc_horizon_s": 1.0,
+  "trot_cycle_s": 0.6,
+  "swing_height_m": 0.04,
+  "contact_frame_height_m": 0.019,
+  "constant_speed_duration_s": 10.0,
+  "ramp_duration_s": 2.0,
+  "cppad_recompile": true,
+  "checks": "trot_integration.py assertions passed for all six cases",
+  "results": {
+    "cheater-first": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "forward_m": 0.9477764219084425,
+      "lateral_m": -0.006024738269624522,
+      "final_actual_height_m": 0.2851331725663407,
+      "final_estimated_height_m": 0.2851331830024719,
+      "final_actual_speed_mps": 0.00015972822942383522,
+      "final_mode": 15,
+      "height_range_m": [
+        0.27660515904426575,
+        0.2885124981403351
+      ],
+      "max_tilt_rad": 0.010351070202887058,
+      "peak_effort_Nm": 30.0,
+      "contact_modes": {
+        "15": 6290,
+        "11": 57,
+        "9": 8888,
+        "6": 8883,
+        "7": 34
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.058523515536721527,
+        "RF": 0.05851767857870809,
+        "LH": 0.05848761916941406,
+        "RH": 0.05853307251276148
+      }
+    },
+    "cheater-upper": {
+      "speed": 0.15,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.7435017159303663,
+      "lateral_m": -0.007254510405032948,
+      "final_actual_height_m": 0.28528769999793446,
+      "final_estimated_height_m": 0.2852877080440521,
+      "final_actual_speed_mps": 0.0002183212032596667,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28476110100746155,
+        0.28902971744537354
+      ],
+      "max_tilt_rad": 0.00942840613424778,
+      "peak_effort_Nm": 8.710961484749157,
+      "contact_modes": {
+        "15": 6314,
+        "9": 8924,
+        "7": 41,
+        "6": 8853,
+        "11": 37,
+        "13": 2
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05855269209580562,
+        "RF": 0.058584839897432656,
+        "LH": 0.05857064976874236,
+        "RH": 0.05852526571406454
+      }
+    },
+    "cheater-interrupt": {
+      "speed": 0.1,
+      "duration": 10.0,
+      "interrupted": true,
+      "forward_m": 0.42899566544141476,
+      "lateral_m": -0.0009996344985824764,
+      "final_actual_height_m": 0.2849969584509244,
+      "final_estimated_height_m": 0.28499695658683777,
+      "final_actual_speed_mps": 0.00010642940475917319,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28498223423957825,
+        0.28848737478256226
+      ],
+      "max_tilt_rad": 0.008669843897223473,
+      "peak_effort_Nm": 8.821563142195556,
+      "contact_modes": {
+        "15": 6342,
+        "11": 15,
+        "9": 5273,
+        "7": 17,
+        "6": 5031
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05851321014243517,
+        "RF": 0.058517904862765695,
+        "LH": 0.05852441698829168,
+        "RH": 0.0585016187805996
+      }
+    },
+    "cheater-timeout": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": true,
+      "forward_m": 0.29885870786381813,
+      "lateral_m": -0.001594529136704458,
+      "final_actual_height_m": 0.2850311304959291,
+      "final_estimated_height_m": 0.28503113985061646,
+      "final_actual_speed_mps": 5.5974025051004426e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28502652049064636,
+        0.28843557834625244
+      ],
+      "max_tilt_rad": 0.009170670062303543,
+      "peak_effort_Nm": 8.807836941417078,
+      "contact_modes": {
+        "15": 6664,
+        "11": 15,
+        "9": 4736,
+        "6": 4673,
+        "7": 16,
+        "13": 3,
+        "14": 1
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05852349214744958,
+        "RF": 0.058524440547419024,
+        "LH": 0.05860663692338607,
+        "RH": 0.058548010494535514
+      }
+    },
+    "kalman-default": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.0038296563391695,
+      "lateral_m": -0.008541797224039334,
+      "final_actual_height_m": 0.28498898415124035,
+      "final_estimated_height_m": 0.28501665592193604,
+      "final_actual_speed_mps": 4.607136901074763e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.27666112780570984,
+        0.28855806589126587
+      ],
+      "max_tilt_rad": 0.01034075953066349,
+      "peak_effort_Nm": 9.493675805744683,
+      "contact_modes": {
+        "15": 6222,
+        "11": 31,
+        "9": 8893,
+        "6": 8880,
+        "7": 22,
+        "13": 17,
+        "14": 14
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05865588056649353,
+        "RF": 0.05865315547558367,
+        "LH": 0.05878884515617158,
+        "RH": 0.058819763384073596
+      }
+    },
+    "kalman-upper": {
+      "speed": 0.15,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.8693721050629484,
+      "lateral_m": -0.001328921612792214,
+      "final_actual_height_m": 0.28515241231047855,
+      "final_estimated_height_m": 0.28518006205558777,
+      "final_actual_speed_mps": 5.331121879779451e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28445863723754883,
+        0.2892836928367615
+      ],
+      "max_tilt_rad": 0.009822244755923748,
+      "peak_effort_Nm": 30.0,
+      "contact_modes": {
+        "15": 6224,
+        "11": 22,
+        "9": 8915,
+        "7": 16,
+        "6": 8865,
+        "14": 38,
+        "13": 35
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.058668159237808534,
+        "RF": 0.058791758990621064,
+        "LH": 0.058883887300967705,
+        "RH": 0.05875432167022751
+      }
+    }
+  },
+  "historical": true,
+  "historical_actuator_limit_Nm": 30.0,
+  "superseded_by": "torque_limit_validation_2026-10-29.json"
+}

@@ -5,7 +5,7 @@
 <robot
   name="colt">
   <link
-    name="baselink">
+    name="base">
     <inertial>
       <origin
         xyz="-0.01108367 0.00002588 0.04826783"
@@ -76,12 +76,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0.02775 0.0449 0"
+        xyz="0.05475 0.0449 0"
         rpy="1.5707963267948966 0 0" />
       <geometry>
         <cylinder
           length="0.09"
-          radius="0.035" />
+          radius="0.045" />
       </geometry>
     </collision>
   </link>
@@ -92,7 +92,7 @@
       xyz="0.1311 0.06 0.0585"
       rpy="0 0 0" />
     <parent
-      link="baselink" />
+      link="base" />
     <child
       link="C_LF_HAA" />
     <axis
@@ -100,7 +100,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -158,7 +158,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -216,11 +216,11 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
-    name="C_LF_FOOT">
+    name="LF_FOOT">
     <inertial>
       <origin
         xyz="0.00000229 0.00000001 -0.00318273"
@@ -259,7 +259,7 @@
     </collision>
   </link>
   <joint
-    name="LF_FOOT"
+    name="LF_foot_fixed"
     type="fixed">
     <origin
       xyz="0 0 -0.229999807853034"
@@ -267,7 +267,7 @@
     <parent
       link="C_LF_KFE" />
     <child
-      link="C_LF_FOOT" />
+      link="LF_FOOT" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -303,12 +303,12 @@
     </visual>
     <collision>
       <origin
-        xyz="-0.02775 0.0449 0"
+        xyz="-0.05475 0.0449 0"
         rpy="1.5707963267948966 0 0" />
       <geometry>
         <cylinder
           length="0.09"
-          radius="0.035" />
+          radius="0.045" />
       </geometry>
     </collision>
   </link>
@@ -319,7 +319,7 @@
       xyz="-0.1311 0.06 0.0585"
       rpy="0 0 0" />
     <parent
-      link="baselink" />
+      link="base" />
     <child
       link="C_LH_HAA" />
     <axis
@@ -327,7 +327,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -385,7 +385,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -443,11 +443,11 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
-    name="C_LH_FOOT">
+    name="LH_FOOT">
     <inertial>
       <origin
         xyz="0.00000364 0.00000001 -0.00318330"
@@ -486,7 +486,7 @@
     </collision>
   </link>
   <joint
-    name="LH_FOOT"
+    name="LH_foot_fixed"
     type="fixed">
     <origin
       xyz="0 0 -0.229999999990562"
@@ -494,7 +494,7 @@
     <parent
       link="C_LH_KFE" />
     <child
-      link="C_LH_FOOT" />
+      link="LH_FOOT" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -530,12 +530,12 @@
     </visual>
     <collision>
       <origin
-        xyz="0.02775 -0.0449 0"
+        xyz="0.05475 -0.0449 0"
         rpy="1.5707963267948966 0 0" />
       <geometry>
         <cylinder
           length="0.09"
-          radius="0.035" />
+          radius="0.045" />
       </geometry>
     </collision>
   </link>
@@ -546,7 +546,7 @@
       xyz="0.1311 -0.06 0.0585"
       rpy="0 0 0" />
     <parent
-      link="baselink" />
+      link="base" />
     <child
       link="C_RF_HAA" />
     <axis
@@ -554,7 +554,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -612,7 +612,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -670,11 +670,11 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
-    name="C_RF_FOOT">
+    name="RF_FOOT">
     <inertial>
       <origin
         xyz="-0.00000123 0.00000001 -0.00318333"
@@ -713,7 +713,7 @@
     </collision>
   </link>
   <joint
-    name="RF_FOOT"
+    name="RF_foot_fixed"
     type="fixed">
     <origin
       xyz="0 0 -0.23"
@@ -721,7 +721,7 @@
     <parent
       link="C_RF_KFE" />
     <child
-      link="C_RF_FOOT" />
+      link="RF_FOOT" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -757,12 +757,12 @@
     </visual>
     <collision>
       <origin
-        xyz="-0.02775 -0.0449 0"
+        xyz="-0.05475 -0.0449 0"
         rpy="1.5707963267948966 0 0" />
       <geometry>
         <cylinder
           length="0.09"
-          radius="0.035" />
+          radius="0.045" />
       </geometry>
     </collision>
   </link>
@@ -773,7 +773,7 @@
       xyz="-0.1311 -0.06 0.0585"
       rpy="0 0 0" />
     <parent
-      link="baselink" />
+      link="base" />
     <child
       link="C_RH_HAA" />
     <axis
@@ -781,7 +781,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -839,7 +839,7 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
@@ -897,11 +897,11 @@
     <limit
       lower="-3.14"
       upper="3.14"
-      effort="30"
+      effort="20"
       velocity="30" />
   </joint>
   <link
-    name="C_RH_FOOT">
+    name="RH_FOOT">
     <inertial>
       <origin
         xyz="-0.00000162 0.00000001 -0.00318284"
@@ -940,7 +940,7 @@
     </collision>
   </link>
   <joint
-    name="RH_FOOT"
+    name="RH_foot_fixed"
     type="fixed">
     <origin
       xyz="0 0 -0.23"
@@ -948,12 +948,12 @@
     <parent
       link="C_RH_KFE" />
     <child
-      link="C_RH_FOOT" />
+      link="RH_FOOT" />
     <axis
       xyz="0 0 0" />
   </joint>
   <link
-    name="imu_Link">
+    name="base_imu">
     <inertial>
       <origin
         xyz="0.00000000 0.00000000 -0.01000000"
@@ -999,10 +999,188 @@
       xyz="0 0 0.0215"
       rpy="0 0 0" />
     <parent
-      link="baselink" />
+      link="base" />
     <child
-      link="imu_Link" />
+      link="base_imu" />
     <axis
       xyz="0 0 0" />
   </joint>
+
+  <!-- ros_control effort transmissions; the CAD inertial/geometry data above is preserved. -->
+  <transmission name="LF_HAA_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LF_HAA_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="LF_HFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LF_HFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="LF_KFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LF_KFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="LH_HAA_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LH_HAA_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="LH_HFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LH_HFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="LH_KFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LH_KFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RF_HAA_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RF_HAA_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RF_HFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RF_HFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RF_KFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RF_KFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RH_HAA_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RH_HAA_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RH_HFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RH_HFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="RH_KFE_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RH_KFE_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="LF_foot_fixed">
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="LH_foot_fixed">
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="RF_foot_fixed">
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="RH_foot_fixed">
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="IMU_fixed">
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="LF_FOOT">
+    <mu1>0.6</mu1>
+    <mu2>0.6</mu2>
+    <kp>1000000</kp>
+    <kd>100</kd>
+  </gazebo>
+  <gazebo reference="LH_FOOT">
+    <mu1>0.6</mu1>
+    <mu2>0.6</mu2>
+    <kp>1000000</kp>
+    <kd>100</kd>
+  </gazebo>
+  <gazebo reference="RF_FOOT">
+    <mu1>0.6</mu1>
+    <mu2>0.6</mu2>
+    <kp>1000000</kp>
+    <kd>100</kd>
+  </gazebo>
+  <gazebo reference="RH_FOOT">
+    <mu1>0.6</mu1>
+    <mu2>0.6</mu2>
+    <kp>1000000</kp>
+    <kd>100</kd>
+  </gazebo>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="liblegged_hw_sim.so">
+      <robotNamespace>/</robotNamespace>
+      <robotParam>robot_description</robotParam>
+      <robotSimType>legged_gazebo/LeggedHWSim</robotSimType>
+      <controlPeriod>0.001</controlPeriod>
+    </plugin>
+    <plugin name="base_ground_truth" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000</updateRate>
+      <bodyName>base</bodyName>
+      <topicName>ground_truth/state</topicName>
+      <frameName>world</frameName>
+      <gaussianNoise>0</gaussianNoise>
+    </plugin>
+  </gazebo>
 </robot>
+
