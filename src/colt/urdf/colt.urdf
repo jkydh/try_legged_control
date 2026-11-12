@@ -215,7 +215,7 @@
       xyz="0 1 0" />
     <limit
       lower="-3.14"
-      upper="3.14"
+      upper="0.0"
       effort="20"
       velocity="30" />
   </joint>
@@ -441,8 +441,8 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.14"
-      upper="3.14"
+      lower="-2.72"
+      upper="0.00"
       effort="20"
       velocity="30" />
   </joint>
@@ -668,8 +668,8 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.14"
-      upper="3.14"
+      lower="-2.72"
+      upper="0.00"
       effort="20"
       velocity="30" />
   </joint>
@@ -895,8 +895,8 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.14"
-      upper="3.14"
+      lower="-2.72"
+      upper="0.00"
       effort="20"
       velocity="30" />
   </joint>
@@ -959,14 +959,14 @@
         xyz="0.00000000 0.00000000 -0.01000000"
         rpy="0 0 0" />
       <mass
-        value="0.00800000" />
+        value="0.02500000" />
       <inertia
-        ixx="0.00000053"
+        ixx="0.00000167"
         ixy="0.00000000"
         ixz="0.00000000"
-        iyy="0.00000053"
+        iyy="0.00000167"
         iyz="0.00000000"
-        izz="0.00000053" />
+        izz="0.00000167" />
     </inertial>
     <visual>
       <origin
@@ -996,7 +996,7 @@
     name="IMU_fixed"
     type="fixed">
     <origin
-      xyz="0 0 0.0215"
+      xyz="0 0 0.0115"
       rpy="0 0 0" />
     <parent
       link="base" />
