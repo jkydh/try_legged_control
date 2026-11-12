@@ -1,0 +1,3 @@
+<launch>
+  <test test-name="h30_ros_serial" pkg="legged_hw" type="h30_ros_test.py" time-limit="30"/>
+</launch>

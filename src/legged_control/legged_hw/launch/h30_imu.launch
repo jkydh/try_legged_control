@@ -1,0 +1,14 @@
+<launch>
+  <arg name="port" default="/dev/serial/by-id/usb-1a86_USB_Single_Serial_5B31016849-if00"/>
+  <arg name="baud" default="460800"/>
+  <arg name="topic" default="/h30/imu"/>
+  <arg name="frame_id" default="base_imu"/>
+  <arg name="config" default="$(find legged_hw)/config/h30_imu.yaml"/>
+  <node name="h30_imu" pkg="legged_hw" type="h30_imu_node" output="screen">
+    <rosparam command="load" file="$(arg config)"/>
+    <param name="port" value="$(arg port)"/>
+    <param name="baud" value="$(arg baud)"/>
+    <param name="topic" value="$(arg topic)"/>
+    <param name="frame_id" value="$(arg frame_id)"/>
+  </node>
+</launch>

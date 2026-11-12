@@ -1,0 +1,9 @@
+# Output is in the base_imu axes. R_BS rotates sensor vectors into base_imu.
+sensor_to_base_rpy: [0.0, 0.0, 0.0]  # roll, pitch, yaw in radians
+world_yaw_offset: 0.0                # left-multiply a world Z rotation, radians
+data_timeout: 0.1                   # steady-clock seconds, after first complete sample
+startup_timeout: 5.0
+# All zero means unknown, not calibrated zero noise. Values are in OUTPUT axes.
+orientation_covariance_diagonal: [0.0, 0.0, 0.0]
+angular_velocity_covariance_diagonal: [0.0, 0.0, 0.0]
+linear_acceleration_covariance_diagonal: [0.0, 0.0, 0.0]

@@ -1,0 +1,36 @@
+<package format="2">
+  <name>colt</name>
+  <version>1.0.0</version>
+  <description>
+    <p>URDF Description package for colt</p>
+    <p>This package contains configuration data, 3D models and launch files
+for colt robot</p>
+  </description>
+  <author>TODO</author>
+  <maintainer email="TODO@email.com" />
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roslaunch</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>gazebo</depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>gazebo_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>ocs2_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>controller_manager_msgs</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>legged_gazebo</exec_depend>
+  <exec_depend>legged_controllers</exec_depend>
+  <test_depend>sensor_msgs</test_depend>
+  <export>
+    <architecture_independent />
+  </export>
+</package>

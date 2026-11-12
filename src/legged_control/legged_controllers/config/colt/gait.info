@@ -1,0 +1,32 @@
+; Contact order: LF, RF, LH, RH. Trot alternates the two diagonal pairs.
+list
+{
+  [0] stance
+  [1] trot
+}
+trot
+{
+  modeSequence
+  {
+    [0] LF_RH
+    [1] RF_LH
+  }
+  switchingTimes
+  {
+    [0] 0.0
+    [1] 0.3
+    [2] 0.6
+  }
+}
+stance
+{
+  modeSequence
+  {
+    [0] STANCE
+  }
+  switchingTimes
+  {
+    [0] 0.0
+    [1] 1.0
+  }
+}

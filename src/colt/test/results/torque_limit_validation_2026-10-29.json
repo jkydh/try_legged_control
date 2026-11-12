@@ -1,0 +1,688 @@
+{
+  "date": "2026-10-29",
+  "actuator_limit_Nm": 20.0,
+  "standup": {
+    "duration_s": 5.0,
+    "kp": 40.0,
+    "kd": 1.5
+  },
+  "wbc": "Nominal feedforward torque bounds reserve the 3*(desired_velocity-measured_velocity) feedback budget",
+  "final_executor": "clamp(position_feedback+velocity_feedback+feedforward, -min(URDF_effort,gazebo_effort_limit), +min(...)); nonfinite requests apply zero",
+  "audit": "Peaks are accumulated every execution update; messages publish at 100 Hz. Per-mode counters/peaks are cumulative across its four cases.",
+  "total_execution_cycles": 188760,
+  "simulation_cases_passed": 8,
+  "boundary_unit_tests_passed": 4,
+  "validation_reused_unchanged_cppad_cache": true,
+  "production_recompileLibrariesCppAd": true,
+  "configuration_check": "Test and production task.info are identical except the CppAD recompilation flag",
+  "root_cause_reproduction": {
+    "standup_duration_s": 3.0,
+    "kp": 60.0,
+    "kd": 3.0,
+    "actual_actuator_limit_during_reproduction_Nm": 20.0,
+    "standup_start_sim_time": 5.02,
+    "peak_context": [
+      {
+        "joint": "LF_HAA",
+        "requested": 29.645878976632677,
+        "applied": 20.0,
+        "measured": 20.0,
+        "saturations": 199,
+        "time": 5.378,
+        "phase": 1,
+        "p": -3.506514268795049,
+        "d": -26.13936470783763,
+        "ff": 0.0,
+        "dq": 8.777565837028156
+      },
+      {
+        "joint": "LH_HAA",
+        "requested": 30.153796859546176,
+        "applied": 20.0,
+        "measured": 20.0,
+        "saturations": 203,
+        "time": 5.392,
+        "phase": 1,
+        "p": -3.8561256361664986,
+        "d": -26.297671223379677,
+        "ff": 0.0,
+        "dq": 8.832495174486255
+      },
+      {
+        "joint": "RF_HAA",
+        "requested": 29.85454468762546,
+        "applied": 20.0,
+        "measured": 20.0,
+        "saturations": 209,
+        "time": 5.385,
+        "phase": 1,
+        "p": 3.699175943862808,
+        "d": 26.15536874376265,
+        "ff": 0.0,
+        "dq": -8.7839858053389
+      },
+      {
+        "joint": "RH_HAA",
+        "requested": 30.42393141554325,
+        "applied": 20.0,
+        "measured": 20.0,
+        "saturations": 211,
+        "time": 5.393,
+        "phase": 1,
+        "p": 3.904735540338976,
+        "d": 26.519195875204275,
+        "ff": 0.0,
+        "dq": -8.906489733011114
+      }
+    ],
+    "finding": "Large measured joint-angle finite-difference velocities amplified by stand-up D feedback. Old WBC bounds also omitted feedback added by the actuator. Legacy summary files cannot attribute every historical 30 Nm sample."
+  },
+  "results": {
+    "cheater-default": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 0.9633997249982188,
+      "lateral_m": -0.0098877317622878,
+      "final_actual_height_m": 0.2849874495710414,
+      "final_estimated_height_m": 0.2849874496459961,
+      "final_actual_speed_mps": 5.8691335837333574e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.2679098844528198,
+        0.2884714603424072
+      ],
+      "max_tilt_rad": 0.025934068486094475,
+      "peak_effort_Nm": 9.470365968641739,
+      "full_rate_samples": 34660,
+      "contact_modes": {
+        "15": 6297,
+        "11": 51,
+        "9": 8872,
+        "6": 8876,
+        "14": 2,
+        "7": 36,
+        "13": 1
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05852228020942891,
+        "RF": 0.058561092748904774,
+        "LH": 0.0585433071518255,
+        "RH": 0.05853531750861129
+      },
+      "full_rate_peak_applied_Nm": 16.39838255704133,
+      "full_rate_peak_measured_Nm": 16.39838255704133
+    },
+    "cheater-upper": {
+      "speed": 0.15,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.7449068025716026,
+      "lateral_m": 0.0020974772130340053,
+      "final_actual_height_m": 0.28497874928203093,
+      "final_estimated_height_m": 0.2849787473678589,
+      "final_actual_speed_mps": 5.730938272201919e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.2849688231945038,
+        0.28893449902534485
+      ],
+      "max_tilt_rad": 0.009044883772730827,
+      "peak_effort_Nm": 8.761812010106969,
+      "full_rate_samples": 59740,
+      "contact_modes": {
+        "15": 6343,
+        "9": 8847,
+        "11": 45,
+        "6": 8880,
+        "7": 29,
+        "14": 2,
+        "13": 1
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.058578046485416015,
+        "RF": 0.05855676947272041,
+        "LH": 0.0585143053105024,
+        "RH": 0.058563709024991646
+      },
+      "full_rate_peak_applied_Nm": 16.39838255704133,
+      "full_rate_peak_measured_Nm": 16.39838255704133
+    },
+    "cheater-interrupt": {
+      "speed": 0.1,
+      "duration": 10.0,
+      "interrupted": true,
+      "publisher_killed": false,
+      "forward_m": 0.4336540970506966,
+      "lateral_m": 0.0024138031021791375,
+      "final_actual_height_m": 0.2849935716062768,
+      "final_estimated_height_m": 0.28499355912208557,
+      "final_actual_speed_mps": 5.3846592296851734e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28496360778808594,
+        0.28856268525123596
+      ],
+      "max_tilt_rad": 0.00850645825266838,
+      "peak_effort_Nm": 11.15155703416936,
+      "full_rate_samples": 77380,
+      "contact_modes": {
+        "15": 6281,
+        "11": 24,
+        "9": 5325,
+        "7": 27,
+        "6": 5030,
+        "13": 1,
+        "14": 1
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05849523265756354,
+        "RF": 0.058539264642554364,
+        "LH": 0.058495636145588094,
+        "RH": 0.05853625865716539
+      },
+      "full_rate_peak_applied_Nm": 16.39838255704133,
+      "full_rate_peak_measured_Nm": 16.39838255704133
+    },
+    "cheater-timeout": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": true,
+      "forward_m": 0.293550057884812,
+      "lateral_m": -0.0009229993443207059,
+      "final_actual_height_m": 0.28502841696483666,
+      "final_estimated_height_m": 0.2850284278392792,
+      "final_actual_speed_mps": 4.998046629715963e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28497743606567383,
+        0.2883048951625824
+      ],
+      "max_tilt_rad": 0.009464908391237259,
+      "peak_effort_Nm": 8.826680751244737,
+      "full_rate_samples": 94400,
+      "contact_modes": {
+        "15": 6584,
+        "11": 24,
+        "9": 4739,
+        "7": 25,
+        "6": 4700,
+        "13": 2
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.058493804129337704,
+        "RF": 0.05856687700012443,
+        "LH": 0.05855238886268182,
+        "RH": 0.05849028846243084
+      },
+      "full_rate_peak_applied_Nm": 16.39838255704133,
+      "full_rate_peak_measured_Nm": 16.39838255704133
+    },
+    "kalman-default": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.022635348442348,
+      "lateral_m": -0.009871784334000286,
+      "final_actual_height_m": 0.2850351585172839,
+      "final_estimated_height_m": 0.2850628197193146,
+      "final_actual_speed_mps": 3.420827893712435e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.26792672276496887,
+        0.2888944149017334
+      ],
+      "max_tilt_rad": 0.025954347103834152,
+      "peak_effort_Nm": 10.933697138121062,
+      "full_rate_samples": 34610,
+      "contact_modes": {
+        "15": 6222,
+        "9": 8913,
+        "13": 25,
+        "7": 20,
+        "6": 8879,
+        "11": 17,
+        "14": 18
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05858240259841785,
+        "RF": 0.05864338726377004,
+        "LH": 0.05878080624600688,
+        "RH": 0.058701711570660536
+      },
+      "full_rate_peak_applied_Nm": 14.396674863392523,
+      "full_rate_peak_measured_Nm": 14.396674863392523
+    },
+    "kalman-upper": {
+      "speed": 0.15,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": false,
+      "forward_m": 1.8692339050736986,
+      "lateral_m": -0.010270066645817783,
+      "final_actual_height_m": 0.2849744882043246,
+      "final_estimated_height_m": 0.2850021421909332,
+      "final_actual_speed_mps": 3.776415209314159e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28498685359954834,
+        0.2892543375492096
+      ],
+      "max_tilt_rad": 0.00955949630588293,
+      "peak_effort_Nm": 8.931257665816915,
+      "full_rate_samples": 59720,
+      "contact_modes": {
+        "15": 6311,
+        "11": 30,
+        "9": 8876,
+        "7": 25,
+        "6": 8875,
+        "13": 34,
+        "14": 32
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05869285599469306,
+        "RF": 0.0587089875980368,
+        "LH": 0.0587767932518205,
+        "RH": 0.05882778167352213
+      },
+      "full_rate_peak_applied_Nm": 14.396674863392523,
+      "full_rate_peak_measured_Nm": 14.396674863392523
+    },
+    "kalman-interrupt": {
+      "speed": 0.1,
+      "duration": 10.0,
+      "interrupted": true,
+      "publisher_killed": false,
+      "forward_m": 0.46658796839796585,
+      "lateral_m": -0.00039914374168594207,
+      "final_actual_height_m": 0.28492178631704473,
+      "final_estimated_height_m": 0.2849494516849518,
+      "final_actual_speed_mps": 2.5375941330446053e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28491395711898804,
+        0.2887420952320099
+      ],
+      "max_tilt_rad": 0.008993443101644516,
+      "peak_effort_Nm": 10.1848970522723,
+      "full_rate_samples": 77290,
+      "contact_modes": {
+        "15": 6166,
+        "11": 15,
+        "9": 5328,
+        "7": 14,
+        "6": 5096,
+        "14": 11,
+        "13": 16
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05864878900552939,
+        "RF": 0.05865283794873037,
+        "LH": 0.05874741959417539,
+        "RH": 0.05875025766528033
+      },
+      "full_rate_peak_applied_Nm": 19.256491625610998,
+      "full_rate_peak_measured_Nm": 19.256491625610998
+    },
+    "kalman-timeout": {
+      "speed": 0.08,
+      "duration": 10.0,
+      "interrupted": false,
+      "publisher_killed": true,
+      "forward_m": 0.32038713345889364,
+      "lateral_m": -0.0018027366089828278,
+      "final_actual_height_m": 0.28510207380698044,
+      "final_estimated_height_m": 0.28512975573539734,
+      "final_actual_speed_mps": 4.756286387180118e-05,
+      "final_mode": 15,
+      "height_range_m": [
+        0.28494298458099365,
+        0.28848034143447876
+      ],
+      "max_tilt_rad": 0.01660834066569805,
+      "peak_effort_Nm": 11.355490598329958,
+      "full_rate_samples": 94360,
+      "contact_modes": {
+        "15": 6580,
+        "11": 14,
+        "9": 4753,
+        "7": 13,
+        "6": 4751,
+        "13": 12,
+        "14": 8,
+        "8": 1
+      },
+      "feet_max_center_height_m": {
+        "LF": 0.05869020294545355,
+        "RF": 0.05872737022168268,
+        "LH": 0.058713475082394745,
+        "RH": 0.05867687881841356
+      },
+      "full_rate_peak_applied_Nm": 19.256491625610998,
+      "full_rate_peak_measured_Nm": 19.256491625610998
+    }
+  },
+  "full_rate_torque_audit": {
+    "cheater": [
+      {
+        "joint": "LF_HAA",
+        "requested": 11.657892419908713,
+        "applied": 11.657892419908713,
+        "measured": 11.657892419908713,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.08023779421746009,
+        "ff": -11.738130214126173,
+        "dq": 0.004688705237398949
+      },
+      {
+        "joint": "LF_HFE",
+        "requested": 8.726191442576344,
+        "applied": 8.726191442576344,
+        "measured": 8.726191442576344,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": -0.0,
+        "d": -0.37422738337034295,
+        "ff": -8.351964059206,
+        "dq": 0.03502426649326651
+      },
+      {
+        "joint": "LF_KFE",
+        "requested": 13.240332921000746,
+        "applied": 13.240332921000746,
+        "measured": 13.240332921000746,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.05410484384325208,
+        "ff": 13.186228077157494,
+        "dq": -0.07942530402971215
+      },
+      {
+        "joint": "LH_HAA",
+        "requested": 5.4209236937987,
+        "applied": 5.4209236937987,
+        "measured": 5.4209236937987,
+        "saturations": 0,
+        "time": 14.324,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.2227597986107832,
+        "ff": -5.643683492409483,
+        "dq": -0.10131647324485016
+      },
+      {
+        "joint": "LH_HFE",
+        "requested": 6.7536007550898765,
+        "applied": 6.7536007550898765,
+        "measured": 6.7536007550898765,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": -0.0,
+        "d": -6.428337174859081,
+        "ff": -0.3252635802307958,
+        "dq": -0.033441827948621494
+      },
+      {
+        "joint": "LH_KFE",
+        "requested": 14.570496103282242,
+        "applied": 14.570496103282242,
+        "measured": 14.570496103282242,
+        "saturations": 0,
+        "time": 73.542,
+        "phase": 2,
+        "p": -0.0,
+        "d": 6.413734312086474,
+        "ff": 8.156761791195768,
+        "dq": -2.268289215539454
+      },
+      {
+        "joint": "RF_HAA",
+        "requested": 7.269319101320502,
+        "applied": 7.269319101320502,
+        "measured": 7.269319101320502,
+        "saturations": 0,
+        "time": 14.324,
+        "phase": 2,
+        "p": 0.0,
+        "d": 1.136576465146543,
+        "ff": 6.132742636173958,
+        "dq": -0.3586646337652155
+      },
+      {
+        "joint": "RF_HFE",
+        "requested": 9.697443225690764,
+        "applied": 9.697443225690764,
+        "measured": 9.697443225690764,
+        "saturations": 0,
+        "time": 32.038,
+        "phase": 2,
+        "p": -0.0,
+        "d": 7.070097943066868,
+        "ff": 2.6273452826238963,
+        "dq": -2.264384225092897
+      },
+      {
+        "joint": "RF_KFE",
+        "requested": 11.498012252863104,
+        "applied": 11.498012252863104,
+        "measured": 11.498012252863104,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": 0.0,
+        "d": 11.333053930824192,
+        "ff": 0.16495832203891114,
+        "dq": -0.31647570439119477
+      },
+      {
+        "joint": "RH_HAA",
+        "requested": 9.597080267318193,
+        "applied": 9.597080267318193,
+        "measured": 9.597080267318193,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.07337170659291453,
+        "ff": 9.523708560725279,
+        "dq": 0.02897800585532906
+      },
+      {
+        "joint": "RH_HFE",
+        "requested": 10.013184932994466,
+        "applied": 10.013184932994466,
+        "measured": 10.013184932994466,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": -0.0,
+        "d": -0.812473915650622,
+        "ff": -9.200711017343844,
+        "dq": 0.11424773149659728
+      },
+      {
+        "joint": "RH_KFE",
+        "requested": 16.39838255704133,
+        "applied": 16.39838255704133,
+        "measured": 16.39838255704133,
+        "saturations": 0,
+        "time": 32.037,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.8258700148065258,
+        "ff": 15.572512542234804,
+        "dq": -0.1808502912830079
+      }
+    ],
+    "kalman": [
+      {
+        "joint": "LF_HAA",
+        "requested": 5.550904664113672,
+        "applied": 5.550904664113672,
+        "measured": 5.550904664113672,
+        "saturations": 0,
+        "time": 91.335,
+        "phase": 2,
+        "p": 0.0,
+        "d": -0.008768473784438558,
+        "ff": -5.542136190329233,
+        "dq": -0.017352093493627763
+      },
+      {
+        "joint": "LF_HFE",
+        "requested": 10.00145592733402,
+        "applied": 10.00145592733402,
+        "measured": 10.00145592733402,
+        "saturations": 0,
+        "time": 31.984,
+        "phase": 2,
+        "p": 0.0,
+        "d": 1.7916537082431083,
+        "ff": 8.20980221909091,
+        "dq": -0.8829439139059758
+      },
+      {
+        "joint": "LF_KFE",
+        "requested": 15.800757086119905,
+        "applied": 15.800757086119905,
+        "measured": 15.800757086119905,
+        "saturations": 0,
+        "time": 74.693,
+        "phase": 2,
+        "p": 0.0,
+        "d": 15.53547980639712,
+        "ff": 0.26527727972278453,
+        "dq": -0.19971836747778582
+      },
+      {
+        "joint": "LH_HAA",
+        "requested": 6.080468278829798,
+        "applied": 6.080468278829798,
+        "measured": 6.080468278829798,
+        "saturations": 0,
+        "time": 74.69,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.0391476222968321,
+        "ff": -6.11961590112663,
+        "dq": 0.0026868453311124085
+      },
+      {
+        "joint": "LH_HFE",
+        "requested": 6.981493448411431,
+        "applied": 6.981493448411431,
+        "measured": 6.981493448411431,
+        "saturations": 0,
+        "time": 45.972,
+        "phase": 2,
+        "p": 0.0,
+        "d": 4.485496094586843,
+        "ff": 2.4959973538245883,
+        "dq": -1.1211722766617527
+      },
+      {
+        "joint": "LH_KFE",
+        "requested": 14.527905422744224,
+        "applied": 14.527905422744224,
+        "measured": 14.527905422744224,
+        "saturations": 0,
+        "time": 83.228,
+        "phase": 2,
+        "p": -0.0,
+        "d": 6.028994936567539,
+        "ff": 8.498910486176685,
+        "dq": -2.1516992256831458
+      },
+      {
+        "joint": "RF_HAA",
+        "requested": 7.028505577003027,
+        "applied": 7.028505577003027,
+        "measured": 7.028505577003027,
+        "saturations": 0,
+        "time": 74.69,
+        "phase": 2,
+        "p": 0.0,
+        "d": 0.053291001909390616,
+        "ff": 6.975214575093636,
+        "dq": 0.010001727158481799
+      },
+      {
+        "joint": "RF_HFE",
+        "requested": 7.1784135755632965,
+        "applied": 7.1784135755632965,
+        "measured": 7.1784135755632965,
+        "saturations": 0,
+        "time": 91.341,
+        "phase": 2,
+        "p": 0.0,
+        "d": -6.756519045664943,
+        "ff": -0.4218945298983538,
+        "dq": -0.5689138063083021
+      },
+      {
+        "joint": "RF_KFE",
+        "requested": 12.856558146287822,
+        "applied": 12.856558146287822,
+        "measured": 12.856558146287822,
+        "saturations": 0,
+        "time": 31.983,
+        "phase": 2,
+        "p": -0.0,
+        "d": 12.626403444730673,
+        "ff": 0.23015470155714846,
+        "dq": 0.8030959124489812
+      },
+      {
+        "joint": "RH_HAA",
+        "requested": 7.203598857565966,
+        "applied": 7.203598857565966,
+        "measured": 7.203598857565966,
+        "saturations": 0,
+        "time": 31.984,
+        "phase": 2,
+        "p": -0.0,
+        "d": -0.2567920657735159,
+        "ff": 7.460390923339482,
+        "dq": 0.21602363424122473
+      },
+      {
+        "joint": "RH_HFE",
+        "requested": 10.36762832541064,
+        "applied": 10.36762832541064,
+        "measured": 10.36762832541064,
+        "saturations": 0,
+        "time": 74.693,
+        "phase": 2,
+        "p": -0.0,
+        "d": -9.862142169221263,
+        "ff": -0.5054861561893779,
+        "dq": 0.36740421081127295
+      },
+      {
+        "joint": "RH_KFE",
+        "requested": 19.256491625610998,
+        "applied": 19.256491625610998,
+        "measured": 19.256491625610998,
+        "saturations": 0,
+        "time": 74.693,
+        "phase": 2,
+        "p": 0.0,
+        "d": 18.930614296597028,
+        "ff": 0.3258773290139694,
+        "dq": -0.8966461599708708
+      }
+    ]
+  }
+}

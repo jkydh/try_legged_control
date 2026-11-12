@@ -1,0 +1,20 @@
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="true"/>
+  <arg name="spawn" default="true"/>
+  <param name="robot_description" textfile="$(find colt)/urdf/colt.urdf"/>
+  <param name="legged_robot_description" textfile="$(find colt)/urdf/colt.urdf"/>
+  <rosparam command="load" file="$(find colt)/config/gazebo.yaml"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find colt)/worlds/empty.world"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+  <node if="$(arg spawn)" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node if="$(arg spawn)" name="spawn_colt" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -param robot_description -model colt -z 0.08
+          -J LF_HAA 0 -J LF_HFE 1.4 -J LF_KFE -2.6
+          -J LH_HAA 0 -J LH_HFE 1.4 -J LH_KFE -2.6
+          -J RF_HAA 0 -J RF_HFE 1.4 -J RF_KFE -2.6
+          -J RH_HAA 0 -J RH_HFE 1.4 -J RH_KFE -2.6" output="screen"/>
+</launch>

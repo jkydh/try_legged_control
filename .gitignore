@@ -1,0 +1,20 @@
+# Catkin/CMake build products and local editor configuration.
+/build/
+/devel/
+/install/
+/logs/
+/build_isolated/
+/devel_isolated/
+/install_isolated/
+/.catkin_tools/
+/.vscode/
+
+# Local backups of the nested repositories' original Git metadata.
+/.vendor-git-backup/
+
+# Python caches, runtime logs, and editor lock/backup files.
+__pycache__/
+*.py[cod]
+*.log
+.~lock.*#
+*~

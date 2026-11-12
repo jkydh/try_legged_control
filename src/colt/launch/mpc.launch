@@ -1,0 +1,26 @@
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="cheater" default="true" doc="Use Gazebo ground truth for initial MPC/WBC validation"/>
+  <arg name="start_control" default="false" doc="Start stand-up automatically; otherwise wait for switch_controller"/>
+  <arg name="task_file" default="$(find legged_controllers)/config/colt/task.info"/>
+  <include file="$(find colt)/launch/gazebo.launch">
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="true"/>
+    <arg name="spawn" value="false"/>
+  </include>
+  <param name="urdfFile" value="$(find colt)/urdf/colt.urdf"/>
+  <param name="taskFile" value="$(arg task_file)"/>
+  <param name="referenceFile" value="$(find legged_controllers)/config/colt/reference.info"/>
+  <param name="gaitCommandFile" value="$(find legged_controllers)/config/colt/gait.info"/>
+  <rosparam command="load" file="$(find legged_controllers)/config/controllers.yaml"/>
+  <node name="colt_bringup" pkg="colt" type="bringup.py" output="screen">
+    <rosparam command="load" file="$(find colt)/config/initial_pose.yaml"/>
+    <param name="cheater" value="$(arg cheater)"/>
+    <param name="start_control" value="$(arg start_control)"/>
+  </node>
+  <node name="legged_robot_target" pkg="legged_controllers" type="legged_target_trajectories_publisher" output="screen">
+    <param name="cmd_vel_timeout" value="0.5"/>
+    <param name="require_mpc_ready" value="true"/>
+  </node>
+  <node name="colt_gait" pkg="legged_controllers" type="legged_gait_command" output="screen"/>
+</launch>
