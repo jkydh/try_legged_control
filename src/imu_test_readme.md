@@ -1,5 +1,10 @@
 # H30 mini IMU 接入 legged_control
 
+**Jetson Ubuntu 22.04 / UART1 当前入口：** [独立读取与部署说明](../tools/h30_imu/README.md)。
+本页保留此前 ROS 1 / USB 联调记录。当前仓库 `mpc.launch` 尚未包含下文的 `use_h30_imu`、`imu_port` 参数，
+`src/colt/test/h30_integration.py` 也未随仓库保存；第 3、4 节对应命令不能当成当前可直接执行的入口。
+现有 ROS 1 环境中独立读取 Jetson UART 可用 `roslaunch legged_hw h30_imu_jetson.launch`。
+
 ## 接入结果与范围
 
 H30 mini 通过 USB 串口以 **460800、8N1、无流控**读取，C++ 节点发布标准 `sensor_msgs/Imu`，控制器可选择该话题作为状态估计输入。

@@ -1,0 +1,15 @@
+<launch>
+  <!-- ROS 1 only. Native Ubuntu 22.04 reading: tools/h30_imu. -->
+  <arg name="port" default="/dev/ttyTHS1"/>
+  <arg name="baud" default="460800"/>
+  <arg name="topic" default="/h30/imu"/>
+  <arg name="frame_id" default="base_imu"/>
+  <arg name="config" default="$(find legged_hw)/config/h30_imu.yaml"/>
+  <include file="$(find legged_hw)/launch/h30_imu.launch">
+    <arg name="port" value="$(arg port)"/>
+    <arg name="baud" value="$(arg baud)"/>
+    <arg name="topic" value="$(arg topic)"/>
+    <arg name="frame_id" value="$(arg frame_id)"/>
+    <arg name="config" value="$(arg config)"/>
+  </include>
+</launch>

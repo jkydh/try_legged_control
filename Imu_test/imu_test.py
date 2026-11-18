@@ -123,10 +123,10 @@ class Parser:
         return frames
 
 
-def ports():
+def ports(sysfs_root="/sys/class/tty"):
     devices = []
-    for entry in sorted(Path("/sys/class/tty").glob("*")):
-        if not entry.name.startswith(("ttyACM", "ttyUSB", "ttyCH343USB")):
+    for entry in sorted(Path(sysfs_root).glob("*")):
+        if not entry.name.startswith(("ttyACM", "ttyUSB", "ttyCH343USB", "ttyTHS", "ttyS")):
             continue
         device = (entry / "device").resolve()
         vendor = product = "?"
@@ -135,7 +135,8 @@ def ports():
                 vendor = (parent / "idVendor").read_text().strip()
                 product = (parent / "idProduct").read_text().strip()
                 break
-        driver = (device / "driver").resolve().name
+        driver_path = device / "driver"
+        driver = driver_path.resolve().name if driver_path.exists() else "?"
         devices.append(("/dev/" + entry.name, vendor, product, driver))
     return devices
 
@@ -149,10 +150,13 @@ def serial_port(path, baud):
         saved = termios.tcgetattr(fd)
         tty.setraw(fd, termios.TCSANOW)
         attrs = termios.tcgetattr(fd)
+        attrs[0] &= ~(termios.IXON | termios.IXOFF | termios.IXANY)
         attrs[2] &= ~(termios.CSIZE | termios.PARENB | termios.CSTOPB |
                       termios.CRTSCTS | termios.HUPCL)
         attrs[2] |= termios.CS8 | termios.CREAD | termios.CLOCAL
         attrs[4] = attrs[5] = getattr(termios, "B%d" % baud)
+        attrs[6][termios.VMIN] = 1
+        attrs[6][termios.VTIME] = 0
         termios.tcsetattr(fd, termios.TCSANOW, attrs)
         yield fd
     finally:
@@ -251,8 +255,11 @@ def run(args, path):
 
 
 def main():
-    cli = argparse.ArgumentParser(description="H30 mini Linux 串口只接收测试，无需 ROS/pyserial。")
-    cli.add_argument("--port", help="指定串口；默认仅自动选择唯一的 1a86:55d4 设备")
+    cli = argparse.ArgumentParser(description="H30 mini Linux/Jetson 串口只接收测试，无需 ROS/pyserial。")
+    port_args = cli.add_mutually_exclusive_group()
+    port_args.add_argument("--port", help="指定串口；默认仅自动选择唯一的 1a86:55d4 USB 设备")
+    port_args.add_argument("--jetson-uart1", action="store_true",
+                           help="使用 JetPack 6 UART1 /dev/ttyTHS1；其他载板请显式指定 --port")
     cli.add_argument("--baud", type=int, default=460800, help="默认 460800")
     cli.add_argument("--duration", type=positive_seconds, default=10.0, help="采集秒数，默认 10")
     cli.add_argument("--csv", type=Path,
@@ -271,11 +278,11 @@ def main():
             if not devices:
                 print("未发现串口。确认 USB 连接；沙箱中请在主机终端执行。")
             return 0
-        path = args.port
+        path = "/dev/ttyTHS1" if args.jetson_uart1 else args.port
         if path is None:
             matches = [p for p, v, d, _ in devices if (v, d) == ("1a86", "55d4")]
             if len(matches) != 1:
-                print("FAIL: 找到 %d 个 CH9102 候选设备。先用 --list 查看，再用 --port 指定。" % len(matches), file=sys.stderr)
+                print("FAIL: 找到 %d 个 CH9102 候选设备。先用 --list 查看；Jetson UART1 用 --jetson-uart1，其他串口用 --port。" % len(matches), file=sys.stderr)
                 return 2
             path = matches[0]
         return run(args, path)

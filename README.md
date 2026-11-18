@@ -1,5 +1,8 @@
 # Colt / legged_control
 
+Jetson Orin Nano Super 8GB + Ubuntu 22.04，使用 UART1（460800）读取 H30 的新入口：
+**[Jetson H30 UART 读取说明](tools/h30_imu/README.md)**。可独立编译运行，不依赖下文的 ROS Noetic 仿真环境。
+
 SolidWorks 四足模型接入 ROS Noetic、Gazebo、OCS2 SQP MPC 和 Weighted WBC。
 当前默认流程：**打开 Gazebo → 无动力自然趴下 → 手动启动控制器 → 平滑起立 → MPC + WBC 保持站立**。
 站稳后可以执行下文的 **trot 前进**，默认不会自动开始行走。

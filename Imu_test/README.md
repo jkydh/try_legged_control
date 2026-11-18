@@ -1,5 +1,9 @@
 # H30 mini USB IMU 读取测试
 
+Jetson Orin Nano Super + Ubuntu 22.04 的板载 UART1 读取请优先看
+[Jetson H30 UART 说明](../tools/h30_imu/README.md)。本工具现支持 `--jetson-uart1`（默认 `/dev/ttyTHS1`），
+`--list` 同时列出板载 `ttyTHS*` / `ttyS*`；下文 USB 驱动和主机检查属于此前 USB 连接的记录，不是 Jetson UART 的安装步骤。
+
 独立于 ROS/catkin 的 Linux 串口测试，默认 **460800 baud、8N1、无流控**。
 仅依赖 Python 3 标准库，不需要 `pip install`、虚拟环境或编译整个机器人项目。
 代码只接收数据，不发送校准、配置、保存或运动命令。打开串口会设置主机端串口参数，退出时尝试恢复原参数并关闭文件描述符。

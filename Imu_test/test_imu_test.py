@@ -14,7 +14,7 @@ import termios
 import time
 import unittest
 
-from imu_test import Parser, checksum, decode_payload
+from imu_test import Parser, checksum, decode_payload, ports
 
 
 # Fixed hand-checkable packet: TID=1, temperature=25 C; CK_A=D5, CK_B=B6.
@@ -36,6 +36,15 @@ def imu_packet():
 
 
 class ProtocolTest(unittest.TestCase):
+    def test_lists_onboard_uart_without_usb_auto_detection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ('ttyTHS1', 'ttyS0', 'ttyUSB0', 'tty0'):
+                (root / name / 'device').mkdir(parents=True)
+            found = ports(root)
+            self.assertEqual([item[0] for item in found], ['/dev/ttyS0', '/dev/ttyTHS1', '/dev/ttyUSB0'])
+            self.assertTrue(all(item[1:3] == ('?', '?') for item in found))
+
     def test_fixed_temperature_frame(self):
         self.assertEqual(checksum(TEMP_FRAME[2:-2]), TEMP_FRAME[-2:])
         self.assertEqual(Parser().feed(TEMP_FRAME), [(1, {"temp_C": 25.0})])
@@ -87,6 +96,9 @@ class SerialTest(unittest.TestCase):
         if csv_path is None:
             csv_path = Path(output_dir.name) / "imu.csv"
         master, slave = pty.openpty()
+        inherited = termios.tcgetattr(slave)
+        inherited[0] |= termios.IXON | termios.IXOFF | termios.IXANY
+        termios.tcsetattr(slave, termios.TCSANOW, inherited)
         before = termios.tcgetattr(slave)
         command = [sys.executable, "-B", str(Path(__file__).with_name("imu_test.py")),
                    "--port", os.ttyname(slave), "--duration", "5" if interrupt else "0.3",
@@ -102,6 +114,7 @@ class SerialTest(unittest.TestCase):
             self.assertTrue(first.startswith("OPEN:"), first)
             active = termios.tcgetattr(slave)
             self.assertEqual(active[4:6], [termios.B460800, termios.B460800])
+            self.assertFalse(active[0] & (termios.IXON | termios.IXOFF | termios.IXANY))
             if data is not None:
                 os.write(master, data)
             if interrupt:

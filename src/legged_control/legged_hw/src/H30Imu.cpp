@@ -35,7 +35,7 @@ void ioError(const std::string& action) {
 }  // namespace
 
 bool H30Parser::decode(const uint8_t* payload, size_t size, H30Sample& sample) const {
-  bool acc = false, gyro = false, quat = false;
+  constexpr double radiansPerDegree = 3.14159265358979323846 / 180.;
   size_t pos = 0;
   while (pos < size) {
     if (size - pos < 2) return false;
@@ -48,10 +48,10 @@ bool H30Parser::decode(const uint8_t* payload, size_t size, H30Sample& sample) c
       auto& vector = kind == 0x10 ? sample.linearAcceleration : sample.angularVelocity;
       for (size_t i = 0; i < 3; ++i) {
         vector[i] = scaledInt32(payload + pos + 4 * i);
-        if (kind == 0x20) vector[i] *= 3.14159265358979323846 / 180.;
+        if (kind == 0x20) vector[i] *= radiansPerDegree;
       }
-      if (kind == 0x10) acc = true;
-      else gyro = true;
+      if (kind == 0x10) sample.hasLinearAcceleration = true;
+      else sample.hasAngularVelocity = true;
     } else if (kind == 0x41) {
       // Device w,x,y,z -> ROS / hardware_interface x,y,z,w.
       for (size_t i = 0; i < 4; ++i) sample.orientation[(i + 3) % 4] = scaledInt32(payload + pos + 4 * i);
@@ -60,11 +60,21 @@ bool H30Parser::decode(const uint8_t* payload, size_t size, H30Sample& sample) c
       norm = std::sqrt(norm);
       if (!std::isfinite(norm) || norm < 0.8 || norm > 1.2) return false;
       for (double& v : sample.orientation) v /= norm;
-      quat = true;
+      sample.hasOrientation = true;
+    } else if (kind == 0x40) {
+      // YESENSE wire order is pitch, roll, yaw in degrees.
+      sample.rpy = {{scaledInt32(payload + pos + 4) * radiansPerDegree,
+                     scaledInt32(payload + pos) * radiansPerDegree,
+                     scaledInt32(payload + pos + 8) * radiansPerDegree}};
+      sample.hasRpy = true;
+    } else if (kind == 0x01) {
+      const uint16_t raw = uint16_t(payload[pos]) | (uint16_t(payload[pos + 1]) << 8);
+      sample.temperature = (raw > 0x7fffU ? int32_t(raw) - 0x10000 : int32_t(raw)) * 0.01;
+      sample.hasTemperature = true;
     }
     pos += length;
   }
-  return acc && gyro && quat;
+  return requireComplete_ ? sample.complete() : (sample.hasImuData() || sample.hasTemperature);
 }
 
 std::vector<H30Sample> H30Parser::feed(const uint8_t* data, size_t size) {
@@ -106,7 +116,7 @@ std::vector<H30Sample> H30Parser::feed(const uint8_t* data, size_t size) {
   return samples;
 }
 
-H30Serial::H30Serial(const std::string& port, int baud) {
+H30Serial::H30Serial(const std::string& port, int baud, bool requireComplete) : parser_(requireComplete) {
   const speed_t speed = baudConstant(baud);
   fd_ = ::open(port.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK | O_CLOEXEC);
   if (fd_ < 0) ioError("open H30 " + port);
@@ -116,6 +126,8 @@ H30Serial::H30Serial(const std::string& port, int baud) {
     savedValid_ = true;
     termios settings = saved_;
     cfmakeraw(&settings);
+    // cfmakeraw clears IXON, but may leave inherited IXOFF/IXANY enabled.
+    settings.c_iflag &= ~(IXON | IXOFF | IXANY);
     settings.c_cflag &= ~(CSIZE | PARENB | CSTOPB | CRTSCTS | HUPCL);
     settings.c_cflag |= CS8 | CREAD | CLOCAL;
     // VMIN=1 with O_NONBLOCK distinguishes EAGAIN (idle) from EOF (unplug).
@@ -150,6 +162,7 @@ std::vector<H30Sample> H30Serial::poll() {
       ioError("read H30 (device disconnected?)");
     }
     if (count == 0) throw std::runtime_error("H30 serial EOF / device disconnected");
+    bytesReceived_ += static_cast<size_t>(count);
     auto parsed = parser_.feed(data, static_cast<size_t>(count));
     samples.insert(samples.end(), parsed.begin(), parsed.end());
   }
